@@ -1,0 +1,21 @@
+{
+    "loginform":
+        [
+            {
+                "id": 0,
+                "name": "login",
+                "label": "Login",
+                "group": "login",
+                "mandatory": true,
+                "type": "text"
+            },
+            {
+                "id": 1,
+                "name": "passwd",
+                "label": "Password",
+                "group": "login",
+                "mandatory": true,
+                "type": "password"
+            }
+        ]
+}
