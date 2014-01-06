@@ -1,10 +1,18 @@
 /**
  * Created by siggi on 24.11.13.
  */
-/*global window*/
+/*global window, exports, module*/
 (function (factory) {
   'use strict';
-  if (typeof define === 'function' && define.amd) {
+  if(typeof exports === 'object'){
+    var jquery = require('jquery'),
+      underscore = require('underscore'),
+      backbone = require('backbone'),
+      Marionette = require('backboneMarionette'),
+      formfield = require('skeleton/models/formfield'),
+      formfieldview = require('skeleton/views/formfieldview');
+    module.exports = factory(jquery, underscore, backbone, Marionette, formfield, formfieldview);
+  }else if (typeof define === 'function' && define.amd) {
     // AMD. Register skeleton module.
     define([
       'jquery',
@@ -68,8 +76,6 @@
 
       var dfdObj = $.Deferred();
 
-      // console.log( 'create Fields' );
-
       if ( typeof options !== 'object' ) {
         throw new Error( 'missing options parameter' );
       }
@@ -85,11 +91,8 @@
       dfdObj.done(function ( data ) {
         // creating models
         $.each( data, function ( idx, list ) {
-          // console.log( 'creating ' + idx + ': ' + list.length );
           $.each( list, function ( idx2, modeldef ) {
-            // console.log( modeldef.type );
             $.when(that.loadTemplates(modeldef) ).then(function(){
-              // console.log('modeldef.template: '+modeldef.template);
               var _m = new FormField( modeldef );
               that.App.Fields.add( _m );
             } );
@@ -99,9 +102,6 @@
 
           // console.log( 'json loaded' );
           that.App.on( 'initialize:after', function () {
-
-            // console.log( that.App.Fields );
-
             that.App.formFieldsView = new that.App.FieldListView( {
               collection: that.App.Fields
             } );
@@ -114,18 +114,7 @@
     };
 
     that.loadJSON = function () {
-      // var that = this;
-      // console.log( that.App.Fields );
-      return $.getJSON( this.options.url, function ( data ) {
-        $.each( data, function ( idx, list ) {
-          console.log( 'creating ' + idx + ': ' + list.length );
-          /* TODO: template loader
-           $.each( list, function ( idx2, modeldef ) {
-           // that.loadTemplates(modeldef);
-           } );
-           */
-        } );
-      } );
+      return $.getJSON( this.options.url);
     };
 
     /**
@@ -137,27 +126,19 @@
       var dfdObj = new $.Deferred();
 
       var templateObj = _.find(that.TemplateCollection, function(model) {
-        // window.console.log('compared: '+model.type+' === '+modeldef.type);
         return model.type === modeldef.type;
       });
 
-      // console.log('test: '+typeof templateObj);
-
       if ( _.isUndefined(templateObj) ) {
-        // console.log('test: failed');
-        // new loading template from file
+        // loading template from file
         $.get('assets/js/skeleton/templates/input-' + modeldef.type + '-template.html',
           function ( data ) {
-            // window.console.log( 'add template2: ' + data );
             modeldef.template = data;
-            /**/
             var tpl = new SkeletonTemplate({
               'type': modeldef.type,
               'content': data
             });
-            // window.console.log('add tpl to collection: ', tpl);
             that.TemplateCollection.add(tpl);
-            /**/
             dfdObj.resolve();
           }
         );

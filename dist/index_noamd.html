@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>SkeletonJS (AMD) - Development</title>
+    <title>SkeletonJS (no AMD) - Development</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/app.css" rel="stylesheet" />
 </head>
@@ -23,30 +23,16 @@
 </div>
 
 
-<!-- include vendor javascript libs -->
-<script src="assets/js/vendor/require/require.js" data-main="assets/js/skeletonRequire"></script>
-<!--
-<script src="assets/js/vendor/jquery.js"></script>
-<script src="assets/js/vendor/bootstrap.js"></script>
-<script src="assets/js/vendor/json2.js"></script>
-<script src="assets/js/vendor/underscore.js"></script>
-<script src="assets/js/vendor/backbone.js"></script>
-<script src="assets/js/vendor/backbone.marionette.js"></script>
--->
-<!-- include skeleton.js lib
 <script src="assets/js/skeleton/skeleton.js"></script>
--->
 
-<!-- start skripts -->
 <script type="text/javascript">
-    /*
-    $(document).ready(function(){
-        mySkeletonApp = new SK();
+    $(function(){
+        var mySkeletonApp = new Skeleton.FormBuilder();
         mySkeletonApp.create({
             'url': 'json/formfields.json',
             'type':'json'
         });
-    }); /**/
+    });
 </script>
 </body>
 </html>

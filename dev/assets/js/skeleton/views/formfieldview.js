@@ -1,10 +1,14 @@
 /**
  * Created by siggi on 01.12.13.
  */
-/*global window*/
+/*global window, exports, module*/
 (function(factory){
   'use strict';
-  if (typeof define === 'function' && define.amd) {
+  if(typeof exports === 'object'){
+    var underscore = require('underscore'),
+      Marionette = require('backboneMarionette');
+    module.exports = factory(underscore, Marionette);
+  }else if (typeof define === 'function' && define.amd) {
     define(['underscore','backboneMarionette'], factory);
   }else{
     window.FormFieldView = factory(window._, window.Marionette);

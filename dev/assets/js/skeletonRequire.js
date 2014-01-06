@@ -6,24 +6,25 @@ require.config({
   paths: {
     'jquery': 'vendor/jquery',
     'bootstrap': 'vendor/bootstrap',
-    'json2': 'vendor/json2',
-    'underscore': 'vendor/underscore',
-    'text': 'vendor/text',
-    'backbone': 'vendor/backbone',
+    // 'json2': 'vendor/json2', // not needed in modern browsers
+    'underscore': 'vendor/amd/underscore',
+    'backbone': 'vendor/amd/backbone',
     'backbone.wreqr': 'vendor/amd/backbone.wreqr',
     'backbone.babysitter': 'vendor/amd/backbone.babysitter',
     'backboneMarionette': 'vendor/amd/backbone.marionette',
     'skeleton': 'skeleton'
   },
   shim: {
+    'underscore': {'exports': '_'},
     'backbone': {
-      'deps': ['jquery', 'underscore', 'text'],
+      'deps': ['jquery', 'underscore'],
       'exports': 'Backbone'
     },
-    'underscore': {
-      'deps': ['text'],
-      'exports': '_'
+    'backbone.wreqr': {
+      'deps':['underscore']
     },
+    'backbone.babysitter': ['backbone.wreqr'],
+    'backboneMarionette': ['underscore','backbone.wreqr','backbone.babysitter'],
     'bootstrap': {
       'deps': ['jquery'],
       'exports': 'jquery'
@@ -31,7 +32,7 @@ require.config({
   }
 });
 
-require(['skeleton','app'], function(Skeleton, App){
+require(['skeleton','app'], function(){
   'use strict';
-  App.initialize();
+  // do something with app
 });

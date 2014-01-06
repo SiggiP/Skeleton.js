@@ -1,13 +1,16 @@
 /**
  * Created by siggi on 24.11.13.
  */
-/**/
+/*global window,exports,module*/
 (function (factory) {
   'use strict';
-  if (typeof define === 'function' && define.amd) {
+  if(typeof exports === 'object'){
+    var skeleton = require('skeleton');
+    module.exports = factory(skeleton);
+  }else if (typeof define === 'function' && define.amd) {
     define(['skeleton'], factory);
   }else{
-    factory(window.Skeleton);
+    window.app = factory(window.Skeleton);
   }
 }(function(Skeleton) {
   'use strict';
@@ -16,12 +19,5 @@
     'url': 'json/formfields.json',
     'type':'json'
   });
-  if (typeof define === 'function' && define.amd) {
-    var initialize = function () {
-      // may not required
-    };
-    return {
-      initialize: initialize
-    };
-  }
+  return mySkeletonApp;
 }));
