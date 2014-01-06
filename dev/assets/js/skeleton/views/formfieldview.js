@@ -17,7 +17,7 @@
       return _.template( model.template, model );
     },
     initialize: function () {
-      window.console.log( 'FieldView ' + '' + ' initialized: ' + this.model.get( 'type' ) );
+      // window.console.log( 'FieldView ' + '' + ' initialized: ' + this.model.get( 'type' ) );
     }
   } );
 }));

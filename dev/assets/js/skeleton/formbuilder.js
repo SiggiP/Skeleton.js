@@ -17,11 +17,11 @@
       factory);
   } else {
     // Browser globals
-    factory(window.jQuery, window._, window.Backbone, window.Marionette, window.FormField, window.FormFieldView);
+    window.formbuilder = factory(window.jQuery, window._, window.Backbone, window.Marionette, window.FormField, window.FormFieldView);
   }
 }(function($, _, Backbone, Marionette, FormField, FormFieldView) {
   'use strict';
-  var formBuilder = function(){
+  return function(){
     var defaultConfig = {
         'url': '/json/formfields.json',
         'type': 'json'
@@ -68,7 +68,7 @@
 
       var dfdObj = $.Deferred();
 
-      console.log( 'create Fields' );
+      // console.log( 'create Fields' );
 
       if ( typeof options !== 'object' ) {
         throw new Error( 'missing options parameter' );
@@ -87,9 +87,9 @@
         $.each( data, function ( idx, list ) {
           // console.log( 'creating ' + idx + ': ' + list.length );
           $.each( list, function ( idx2, modeldef ) {
-            console.log( modeldef.type );
+            // console.log( modeldef.type );
             $.when(that.loadTemplates(modeldef) ).then(function(){
-              console.log('modeldef.template: '+modeldef.template);
+              // console.log('modeldef.template: '+modeldef.template);
               var _m = new FormField( modeldef );
               that.App.Fields.add( _m );
             } );
@@ -97,7 +97,7 @@
         } );
       } ).done( function () {
 
-          console.log( 'json loaded' );
+          // console.log( 'json loaded' );
           that.App.on( 'initialize:after', function () {
 
             // console.log( that.App.Fields );
@@ -137,14 +137,14 @@
       var dfdObj = new $.Deferred();
 
       var templateObj = _.find(that.TemplateCollection, function(model) {
-        window.console.log('compared: '+model.type+' === '+modeldef.type);
+        // window.console.log('compared: '+model.type+' === '+modeldef.type);
         return model.type === modeldef.type;
       });
 
-      console.log('test: '+typeof templateObj);
+      // console.log('test: '+typeof templateObj);
 
       if ( _.isUndefined(templateObj) ) {
-        console.log('test: failed');
+        // console.log('test: failed');
         // new loading template from file
         $.get('assets/js/skeleton/templates/input-' + modeldef.type + '-template.html',
           function ( data ) {
@@ -155,40 +155,18 @@
               'type': modeldef.type,
               'content': data
             });
-            window.console.log('add tpl to collection: ', tpl);
+            // window.console.log('add tpl to collection: ', tpl);
             that.TemplateCollection.add(tpl);
             /**/
             dfdObj.resolve();
           }
-        )
-          .fail(function(){
-            window.console.log('load failed');
-          })
-          .always(function(){
-            window.console.log(that.TemplateCollection);
-          });
+        );
       }else{
-        console.log('test: passed');
         modeldef.template = templateObj.content;
         dfdObj.resolve();
       }
       return dfdObj.promise();
     };
-
-    that.getTemplate = function ( model ) {
-      if ( typeof that.Templates[model.type] === 'string' ) {
-        return that.Templates[model.type];
-      }
-      return false;
-    };
-
     return that;
-  };
-
-  if (typeof define === 'function' && define.amd) {
-    return formBuilder;
-  }else{
-    window.formbuilder = formBuilder;
-  }
-  // end return
+  };// end return
 }));
