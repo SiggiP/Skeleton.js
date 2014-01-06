@@ -11,34 +11,42 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <span class="brand">Login App</span>
+            <span class="brand">Skeleton Formbuilder</span>
         </div>
     </div>
 </div>
 
-<div id="main-region" class="container">
-    <p>The Main Region to be replaced by our app</p>
+<div class="container">
+    <form id="main-region" class="form-horizontal">
+        <p>The Main Region to be replaced by our app</p>
+    </form>
 </div>
 
 
 <!-- include vendor javascript libs -->
+<script src="assets/js/vendor/require.js" data-main="assets/js/skeletonRequire"></script>
+<!--
 <script src="assets/js/vendor/jquery.js"></script>
 <script src="assets/js/vendor/bootstrap.js"></script>
 <script src="assets/js/vendor/json2.js"></script>
 <script src="assets/js/vendor/underscore.js"></script>
 <script src="assets/js/vendor/backbone.js"></script>
 <script src="assets/js/vendor/backbone.marionette.js"></script>
-<!-- include skeleton.js lib -->
-<script src="assets/js/skeleton.js"></script>
+-->
+<!-- include skeleton.js lib
+<script src="assets/js/skeleton/skeleton.js"></script>
+-->
+
 <!-- start skripts -->
 <script type="text/javascript">
+    /*
     $(document).ready(function(){
         mySkeletonApp = new SK();
         mySkeletonApp.create({
             'url': 'json/formfields.json',
             'type':'json'
         });
-    });
+    }); /**/
 </script>
 </body>
 </html>
