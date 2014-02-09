@@ -9,8 +9,6 @@ require.config({
     // 'json2': 'vendor/json2', // not needed in modern browsers
     'underscore': 'vendor/amd/underscore',
     'backbone': 'vendor/amd/backbone',
-    'backbone.wreqr': 'vendor/amd/backbone.wreqr',
-    'backbone.babysitter': 'vendor/amd/backbone.babysitter',
     'backboneMarionette': 'vendor/amd/backbone.marionette',
     'skeleton': 'skeleton'
   },
