@@ -1,84 +1,87 @@
 {
-  "loginform":
-    [
-      {
-        "id": 0,
-        "name": "login",
-        "label": "Login",
-        "group": "login",
-        "mandatory": true,
-        "type": "text",
-        "value": "",
-        "placeholder": "Enter your login"
-      },
-      {
-        "id": 1,
-        "name": "passwd",
-        "label": "Password",
-        "group": "login",
-        "mandatory": true,
-        "type": "password",
-        "value": "",
-        "placeholder": "Enter your password"
-      },
-      {
-        "id": 2,
-        "name": "passwd2",
-        "label": "Confirm Password",
-        "group": "login",
-        "mandatory": true,
-        "type": "password",
-        "value": "",
-        "placeholder": "Confirm your password"
-      },
-      {
-        "id": 3,
-        "name": "name",
-        "label": "Name",
-        "group": "login",
-        "mandatory": true,
-        "type": "text",
-        "value": "",
-        "placeholder": "Enter your name"
-      },
-      {
-        "id": 4,
-        "name": "surname",
-        "label": "Surname",
-        "group": "login",
-        "mandatory": true,
-        "type": "text",
-        "value": "",
-        "placeholder": "Enter your surname"
-      },
-      {
-        "id": 5,
-        "name": "language",
-        "label": "Language",
-        "group": "login",
-        "mandatory": true,
-        "type": "select",
-        "value": "",
-        "placeholder": "",
-        "options": [{
-                      "value": "en",
-                      "text": "English"
-                    },
-                    {
-                      "value": "de",
-                      "text": "Deutsch"
-                    }
-        ]
-      },
-      {
-        "id": 6,
-        "name": "email",
-        "label": "Email",
-        "group": "login",
-        "mandatory": true,
-        "type": "text",
-        "value": "",
-        "placeholder": "Enter your email"
-      }
+    "loginform": [
+        {
+            "id": "0",
+            "name": "login",
+            "label": "Login",
+            "group": "login",
+            "mandatory": true,
+            "type": "text",
+            "autocomplete": "off",
+            "value": "",
+            "placeholder": "Enter your login"
+        },
+        {
+            "id": "1",
+            "name": "passwd",
+            "label": "Password",
+            "group": "login",
+            "mandatory": true,
+            "type": "password",
+            "autocomplete": "off",
+            "value": "",
+            "placeholder": "Enter your password"
+        },
+        {
+            "id": "2",
+            "name": "passwd2",
+            "label": "Confirm Password",
+            "group": "login",
+            "mandatory": true,
+            "type": "password",
+            "autocomplete": "off",
+            "value": "",
+            "placeholder": "Confirm your password"
+        },
+        {
+            "id": "3",
+            "name": "name",
+            "label": "Name",
+            "group": "login",
+            "mandatory": true,
+            "type": "text",
+            "value": "",
+            "placeholder": "Enter your name"
+        },
+        {
+            "id": 4,
+            "name": "surname",
+            "label": "Surname",
+            "group": "login",
+            "mandatory": true,
+            "type": "text",
+            "value": "",
+            "placeholder": "Enter your surname"
+        },
+        {
+            "id": 5,
+            "name": "language",
+            "label": "Language",
+            "group": "login",
+            "mandatory": true,
+            "type": "select",
+            "value": "",
+            "placeholder": "",
+            "options": [
+                {
+                    "value": "en",
+                    "text": "English"
+                },
+                {
+                    "value": "de",
+                    "text": "Deutsch"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "email",
+            "label": "Email",
+            "group": "login",
+            "mandatory": true,
+            "type": "text",
+            "value": "",
+            "placeholder": "Enter your email"
+        }
     ]
 }

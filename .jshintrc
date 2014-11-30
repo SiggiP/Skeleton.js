@@ -20,7 +20,6 @@
   "smarttabs": true,
   "jquery": true,
   "laxcomma": true,
-  // Custom globals.
   "predef" : [
     "define",
     "require"
